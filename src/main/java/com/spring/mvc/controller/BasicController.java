@@ -35,7 +35,7 @@ public class BasicController {
 
     }
 
-    // 사용자의 요청 URI: req/ex
+    // 사용자의 요청 URI: /req/ex
     // 응답시에 views폴더 아래에 req_ex폴더 아래이 있는 v1.jsp를 열어야 함.
     @GetMapping("/req/ex")
     public String ex() {
@@ -47,15 +47,9 @@ public class BasicController {
         log.info("/req/v1 GET!");
         return "req_ex/v1";
     }
-    @PostMapping("/req/v1")
-    public String v1Post() {
-        log.info("/req/v1 POST!");
-        return "req_ex/v1";
-    }
 
     //요청 파라미터 받기: 클라이언트에서 서버로 전송된 데이터
     //www.abc.com/req/v1?pet=puppy&kind=bulldog
-
 
     // 1. HttpServletRequest 객체 활용하기
     @PostMapping("/req/v1")
@@ -80,6 +74,7 @@ public class BasicController {
                             //input에 name이 매개변수 이름이랑 같을 경우 @RequestParam 생략
 
         log.info(String.format("%s의 작년 나이는 %d입니다.", pet1, age - 1));
+
         return "req_ex/v1";
     }
 
@@ -97,6 +92,7 @@ public class BasicController {
     public String v4(Model model) {
         String[] foods = {"짜장면", "볶음밥", "돈까스", "삼겹살", "햄버거"};
         int rn = (int) (Math.random() * foods.length);
+
         model.addAttribute("f", foods[rn]);
         model.addAttribute("foods", foods);
 

@@ -27,7 +27,7 @@ public class LoginController {
         } else {
             model.addAttribute("result", "idFail");
         }
-        System.out.println("로그인 양식 오픈!!");
+        //jsp파일 열기
         return "WEB-INF/views/s-result.jsp";
     }
 }

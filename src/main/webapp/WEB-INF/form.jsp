@@ -11,10 +11,8 @@
         label {
             display: block;
         }
-
     </style>
 </head>
-
 <body>
     //보안 폴더 WEB-INF에 JSP 파일 넣기
 
