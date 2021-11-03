@@ -11,7 +11,9 @@ public class LoginController {
     //로그인 양식화면을 열어주는 요청처리
     @GetMapping("/s-login-form")
     public String sLoginForm() {
-        return "/WEB-INF/views/s-form.jsp";
+        System.out.println("로그인 양식 오픈!!");
+//        return "/WEB-INF/views/s-form.jsp";
+        return "s-form";
     }
 
     //로그인 검증 요청처리
