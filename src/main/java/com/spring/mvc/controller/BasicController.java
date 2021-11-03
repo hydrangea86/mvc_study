@@ -59,16 +59,14 @@ public class BasicController {
         String age = request.getParameter("age");
         int ageNum = Integer.parseInt(age);
 
-        log.info("선택한동물: " +petName);
+        log.info("선택한동물: " + petName);
         log.info(petName + "의 내년 나이는 " + (ageNum + 1) + "살입니다.");
         return "req_ex/v1";
     }
 
     // 2. @RequestParam 이용하기
     @PostMapping("/req/v2")
-    public String v2(
-            @RequestParam("pet") String pet1,
-            int age) {
+    public String v2(@RequestParam("pet") String pet1, int age) {
 
         String pet = "하하"; //지역변수로 input에 name에같은 name으로 쓸경우 -> @RequestParam("pet") String pet1 설정해줘야 함
                             //input에 name이 매개변수 이름이랑 같을 경우 @RequestParam 생략
@@ -80,7 +78,13 @@ public class BasicController {
 
     // 3. 커맨드 객체 활용하기
     @PostMapping("/req/v3")
-    public String v3(Model model) {
+    public String v3(Pet PetInfo, Model model) {
+        model.addAttribute("petName", PetInfo.getPet());
+        model.addAttribute("petAge", PetInfo.getAge());
+        model.addAttribute("petGender", PetInfo.getGender());
+        model.addAttribute("petMaster", PetInfo.getMaster());
+        model.addAttribute("petHobby", PetInfo.getHobby());
+
 
         return "req_ex/pet_info";
     }

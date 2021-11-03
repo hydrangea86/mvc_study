@@ -17,7 +17,6 @@ public class Pet {
     private String gender;
     private List<String> hobby;
 
-
     public Pet() {
         System.out.println("커맨드 객체 Pet 생성!!");
     }
