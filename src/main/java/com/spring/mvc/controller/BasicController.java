@@ -85,7 +85,6 @@ public class BasicController {
         model.addAttribute("petMaster", PetInfo.getMaster());
         model.addAttribute("petHobby", PetInfo.getHobby());
 
-
         return "req_ex/pet_info";
     }
 
