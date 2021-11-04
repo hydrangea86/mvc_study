@@ -15,7 +15,7 @@
         <p>
             우리 애완동물 이름은 ${petName}이구요~~~ <br>
             나이는 ${petAge}살입니다. 그리고 주인인 제 이름은 ${petMaster}이구요~~ <br>
-            ${petName}의 성별은 ${petGender}입니다. {}            
+            ${petName}의 성별은 ${petGender}입니다.     
         </p>
         <h2>* ${petName}이(가) 좋아하는 것! </h2>
         <ul>
