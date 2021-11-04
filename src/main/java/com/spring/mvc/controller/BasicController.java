@@ -69,7 +69,7 @@ public class BasicController {
     public String v2(@RequestParam("pet") String pet1, int age) {
 
         String pet = "하하"; //지역변수로 input에 name에같은 name으로 쓸경우 -> @RequestParam("pet") String pet1 설정해줘야 함
-                            //input에 name이 매개변수 이름이랑 같을 경우 @RequestParam 생략
+        //input에 name이 매개변수 이름이랑 같을 경우 @RequestParam 생략
 
         log.info(String.format("%s의 작년 나이는 %d입니다.", pet1, age - 1));
 
@@ -102,5 +102,19 @@ public class BasicController {
         return "req_ex/result";
     }
 
+    @GetMapping("/req/quiz")
+    public String quiz() {
+        return "req_ex/req_quize";
+    }
 
+    @PostMapping("/req/quiz")
+    public String login(String userAccount, String userPassword, Model model) {
+        //@RequsetParam 쓸 경우는 파라미터 명을 마음대로 설정할 경우
+        model.addAttribute("account", userAccount);
+        if (userAccount.equals("master") && userPassword.equals("1234")) {
+            return "req_ex/success";
+        } else {
+            return "req_ex/fail";
+        }
+    }
 }
