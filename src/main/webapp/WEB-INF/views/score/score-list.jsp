@@ -29,7 +29,7 @@
 
     <title>Hong Studio</title>
 
-    <!-- 파비콘 넣기 (구글에 사진 무료 파비콘 변환 사이트 있음)-->
+    <!-- 파비콘 넣기 -->
     <link rel="icon" href="siteicon.ico">
     <link rel="apple-touch-icon" href="siteicon.ico">
 
@@ -40,34 +40,13 @@
     <!-- https://linearicons.com/free#cdn -->
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
 
-    <!-- animate css || https://animate.style -->
-    <!-- <link rel="stylesheet" href="css/animate.min.css"> -->
-
-    <!-- slick css || https://kenwheeler.github.io/slick/  -->
-    <!-- <link rel="stylesheet" href="css/slick.css"> -->
 
     <!-- custom css -->
     <link rel="stylesheet" href="/css/main.css">
 
-    <!-- jquery -->
-    <!-- <script src="js/jquery-3.3.1.min.js"></script> -->
-
-    <!-- libraries -->
-    <!-- scrolla js -->
-    <!-- <script src="js/scrolla.jquery.min.js" defer></script> -->
-    <!-- slick js -->
-    <!-- <script src="js/slick.min.js" defer></script> -->
-
     <!-- custom js -->
-    <!-- <script src="js/config.js" defer></script> -->
-    <!-- <script src="js/gnb-event.js" defer></script> -->
-    <!-- <script src="js/scroll-event.js" defer></script> -->
+    <script src="/js/gnb-event.js" defer></script>
 
-
-    <!-- custom js-->
-    <script src="/js/gnb-event.js"></script>
-
-    <title>성적관리 프로그램</title>
 
     <style>
         label {
@@ -100,10 +79,16 @@
         .del-btn:hover {
             background: orangered;
         }
+
+        section.score {
+            padding: 200px 50px 100px;
+            font-size: 1.5em;
+        }
     </style>
 </head>
 
 <body>
+
     <div class="wrap">
 
         <!-- header -->
@@ -129,7 +114,7 @@
                     <li><a href="/">Home</a></li>
                     <li><a href="/score/list">Score App</a></li>
                     <li><a href="/work">Work</a></li>
-                    <li><a href="hello.jsp">Contact</a></li>
+                    <li><a href="/hello.jsp">Contact</a></li>
                     <li><a href="/login-form">Login</a></li>
                     <li><a href="/s-login-form">S-Login</a></li>
                 </ul>
@@ -160,17 +145,21 @@
             </form>
 
             <hr>
+
             <ul class="score-list">
                 <li>총 학생 수: ${scores.size()}명</li>
+
                 <c:forEach var="s" items="${scores}">
-                    <li># 학번: ${s.stuNum}, 이름: <a href="/score/detail?stuNum=${s.stuNum}">${s.markName}</a>, 국어:
+                    <li>
+                        # 학번: ${s.stuNum}, 이름: <a href="/score/detail?stuNum=${s.stuNum}">${s.markName}</a>, 국어:
                         ${s.kor}점,
-                        영어: ${s.eng}점, 수학: ${s.math}점, 총점: ${s.total}점,
-                        평균: ${s.average}점
+                        영어: ${s.eng}점, 수학: ${s.math}점, 총점: ${s.total}점
+                        , 평균: ${s.average}점
                         <a class="del-btn" href="/score/delete?stuNum=${s.stuNum}">삭제</a>
                     </li>
                 </c:forEach>
             </ul>
+
         </section>
 
         <!-- footer-->
@@ -187,7 +176,10 @@
             <a href="#top" class="go-top"><span class="lnr lnr-arrow-up"></span></a>
         </footer>
         <!-- //footer-->
+
+
     </div>
+
     <script>
         const $ul = document.querySelector('.score-list');
 
@@ -195,22 +187,25 @@
             if (!e.target.matches('a.del-btn')) return;
 
             e.preventDefault();
-            // console.log('클릭이벤트 발동!');
+            //console.log('클릭이벤트 발동!');
+
             if (confirm('정말로 삭제하시겠습니까?')) {
-                //삭제 진행
-                location.href = e.target.getAttribute('href'); //'score/list'
+                //삭제 진행                
+                location.href = e.target.getAttribute('href');
             } else {
                 //삭제 취소
                 return;
             }
+
         });
 
-        //홈화면으로 버튼
+        //홈화면으로 버튼 이벤트
         const $homeBtn = document.getElementById('go-home');
         $homeBtn.onclick = e => {
             location.href = '/';
         };
     </script>
+
 </body>
 
 </html>
