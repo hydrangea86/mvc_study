@@ -65,6 +65,25 @@ public class BoardController {
         log.info("board -" + board);
         model.addAttribute("b", board);
         return "/board/content";
+    }
 
+    //게시물 삭제 요청
+    @GetMapping("/delete")
+    public String delete(Long boardNo) {
+        log.info("/board/content delete GET " + boardNo);
+        boardService.delete(boardNo);
+        return "redirect:/board/list";
+    }
+
+    //게시물 수정 요청
+    @GetMapping("/modify")
+    public String update() {
+        log.info("/board/update GET!" );
+        return "/board/modify";
+    }
+    @PostMapping("/modify")
+    public String update(Board board) {
+        boardService.update(board);
+        return "redirect:/board/list";
     }
 }

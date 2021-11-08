@@ -5,7 +5,7 @@
 
 <head>
     <%@ include file="../include/static-head.jsp" %>
-    
+
     <style>
         .content-container {
             width: 60%;
@@ -67,10 +67,14 @@
                 </p>
             </div>
 
-                <div class="btn-group btn-group-lg custom-btn-group" role="group">
-                    <button type="button" class="btn btn-warning">수정</button>
-                    <button type="button" class="btn btn-danger">삭제</button>
-                    <button type="button" class="btn btn-dark">목록</button>
+            <div class="btn-group btn-group-lg custom-btn-group button-list" role="group">
+                <button type="button" class="btn btn-warning">
+                    <a class="update-btn" href="/board/modify">수정</a>
+                </button>
+                <button type="button" class="btn btn-danger">
+                    <a class="del-btn" href="/board/delete?boardNo=${b.boardNo}">삭제</a>
+                </button>
+                <button id="go-list" type="button" class="btn btn-dark">목록</button>
             </div>
 
         </div>
@@ -78,6 +82,31 @@
         <%@ include file="../include/footer.jsp" %>
 
     </div>
+    <script>
+        const $ul = document.querySelector('.button-list');
+
+        $ul.addEventListener('click', e => {
+            if (!e.target.matches('a.del-btn')) return;
+
+            e.preventDefault();
+            //console.log('클릭이벤트 발동!');
+
+            if (confirm('정말로 삭제하시겠습니까?')) {
+                //삭제 진행                
+                location.href = e.target.getAttribute('href');
+            } else {
+                //삭제 취소
+                return;
+            }
+
+        });
+
+        //홈화면으로 버튼 이벤트
+        const $homeBtn = document.getElementById('go-list');
+        $homeBtn.onclick = e => {
+            location.href = '/board/list';
+        };
+    </script>
 
 </body>
 

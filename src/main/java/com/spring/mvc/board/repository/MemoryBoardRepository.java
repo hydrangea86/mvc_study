@@ -49,11 +49,13 @@ public class MemoryBoardRepository implements BoardRepository {
 
     @Override
     public boolean delete(Long boardNo) {
+        boardMap.remove(boardNo);
         return false;
     }
 
     @Override
     public boolean update(Board board) {
+        boardMap.put(board.getBoardNo(), board);
         return false;
     }
 }

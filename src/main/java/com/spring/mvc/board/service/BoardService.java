@@ -40,4 +40,14 @@ public class BoardService {
     public Board get(Long boardNo) {
         return boardRepository.getContent(boardNo);
     }
+
+    //중간 삭제처리
+    public void delete(Long boardNo) {
+        boardRepository.delete(boardNo);
+    }
+
+    //수정 요청
+    public boolean update(Board board) {
+        return boardRepository.update(board);
+    }
 }
