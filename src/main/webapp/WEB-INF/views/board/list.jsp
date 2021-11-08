@@ -6,26 +6,24 @@
     <%@ include file="../include/static-head.jsp" %>
 
     <style>
-       .board-lis {
-           width: 70%;
-           margin: 0;
-       }
+       .board-list {
+            width: 70%;
+            margin: 0 auto;
+        }
+
         .board-list .articles {
             margin: 250px auto 100px;
             border-collapse: collapse;
             font-size: 1.5em;
-        }
-        .board-list .articles tr td,
-        .board-list .articles tr th {
-            border: 1px solid gray;
-            padding: 10px;
-        }
-        .board-list .btn-wirte {
-            text-align: right;
-            position: relative;
-            top: -50px;
+            border-radius: 10px;
         }
 
+        .board-list .btn-write {
+            /* background: orange; */
+            text-align: right;
+            position: relative;
+            top: -70px;
+        }
     </style>
 </head>
 <body>

@@ -27,7 +27,7 @@
 
     <title>Hong Studio</title>
 
-    <!-- 파비콘 넣기 (구글에 사진 무료 파비콘 변환 사이트 있음)-->
+    <!-- 파비콘 넣기 -->
     <link rel="icon" href="siteicon.ico">
     <link rel="apple-touch-icon" href="siteicon.ico">
 
@@ -88,8 +88,8 @@
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="/score/list">Score App</a></li>
-                    <li><a href="/list">Board</a></li>
-                    <li><a href="hello.jsp">Contact</a></li>
+                    <li><a href="/board/list">Board</a></li>
+                    <li><a href="/hello.jsp">Contact</a></li>
                     <li><a href="/login-form">Login</a></li>
                     <li><a href="/s-login-form">S-Login</a></li>
                 </ul>
@@ -264,6 +264,7 @@
         </footer>
         <!-- //footer-->
 
+
         <script>
             //버튼의 요소 노드 취득
             const menuBtn = document.querySelector('header .menu-open');
@@ -272,11 +273,11 @@
             const gnb = document.querySelector('.gnb');
 
             //클릭 이벤트 생성
-            menuBtn.addEventListener('click', () => {
+            menuBtn.addEventListener('click', e => {
                 gnb.classList.add('on');
             });
 
-            closeBtn.addEventListener('click', () => {
+            closeBtn.addEventListener('click', e => {
                 gnb.classList.remove('on');
             });
         </script>

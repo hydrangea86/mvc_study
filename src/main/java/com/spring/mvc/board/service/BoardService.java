@@ -3,6 +3,7 @@ package com.spring.mvc.board.service;
 import com.spring.mvc.board.domain.Board;
 import com.spring.mvc.board.repository.BoardRepository;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ public class BoardService {
 
     private final BoardRepository boardRepository;
 
+    @Autowired
     public BoardService(BoardRepository boardRepository) {
         this.boardRepository = boardRepository;
     }

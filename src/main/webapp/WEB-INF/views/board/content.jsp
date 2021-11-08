@@ -5,13 +5,14 @@
 
 <head>
     <%@ include file="../include/static-head.jsp" %>
+    
     <style>
         .content-container {
-            width: 50%;
+            width: 60%;
             margin: 150px auto;
             position: relative;
         }
-        
+
         .content-container .main-title {
             font-size: 24px;
             font-weight: 700;
@@ -24,7 +25,7 @@
 
         .content-container .main-content {
             border: 2px solid #ccc;
-            border-radius: 10px;
+            border-radius: 20px;
             padding: 10px 25px;
             font-size: 1.1em;
             text-align: justify;
@@ -35,7 +36,7 @@
             position: absolute;
             bottom: -10%;
             left: 50%;
-            transform: translateX(-50%)
+            transform: translateX(-50%);
         }
     </style>
 </head>
@@ -44,7 +45,7 @@
     <div class="wrap">
         <%@ include file="../include/header.jsp" %>
 
-        <div class="content-conatainer">
+        <div class="content-container">
 
             <h1 class="main-title">${b.boardNo}번 게시물</h1>
 
@@ -64,17 +65,18 @@
                 <p class="main-content">
                     ${b.content}
                 </p>
+            </div>
 
                 <div class="btn-group btn-group-lg custom-btn-group" role="group">
                     <button type="button" class="btn btn-warning">수정</button>
                     <button type="button" class="btn btn-danger">삭제</button>
                     <button type="button" class="btn btn-dark">목록</button>
-                  </div>
             </div>
 
         </div>
 
         <%@ include file="../include/footer.jsp" %>
+
     </div>
 
 </body>

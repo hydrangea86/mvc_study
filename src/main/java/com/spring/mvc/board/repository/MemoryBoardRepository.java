@@ -16,12 +16,12 @@ public class MemoryBoardRepository implements BoardRepository {
     //메모리 저장소
     private Map<Long, Board> boardMap = new HashMap<>();
 
-    public MemoryBoardRepository(Map<Long, Board> boardMap) {
-        boardMap.put(1L, new Board("개그맨", "아라따리또", "아라비안나이트 신비한 이야기"));
-        boardMap.put(2L, new Board("뽀로로", "코코코", "아라비안나이트 "));
-        boardMap.put(3L, new Board("Jack", "키키키", "신비한 이야기"));
-        boardMap.put(4L, new Board("Steven", "흐흐흐", " 신비한 "));
-        boardMap.put(5L, new Board("말썽쟁이", "크크크", "이야기"));
+    public MemoryBoardRepository() {
+        boardMap.put(1L, new Board("개그맨", "아라따리또", "아리비안나이트 신비한이야기"));
+        boardMap.put(2L, new Board("뽀로로", "노는게", "제일 조와~~~"));
+        boardMap.put(3L, new Board("Jack", "hey !!", "hello ^^v"));
+        boardMap.put(4L, new Board("Steven", "열정", "이 쎄상에!!"));
+        boardMap.put(5L, new Board("말썽쟁이", "ㅋㅋㅋㅋㅋ", "ㅂㄴㅁㅇ러ㅗ냄롱나ㅗㅓㅣ론ㅈ알넝린ㅂㄷㅈㅂㄷㅂㅇㄹㄴㅁㅇㅁㄴ언이라"));
     }
 
     @Override
@@ -36,7 +36,9 @@ public class MemoryBoardRepository implements BoardRepository {
 
     @Override
     public Board getContent(Long boardNo) {
-        return boardMap.get(boardNo);
+        Board board = boardMap.get(boardNo);
+        log.info("board -" + board);
+        return board;
     }
 
     @Override

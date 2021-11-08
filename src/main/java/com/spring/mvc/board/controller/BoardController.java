@@ -27,9 +27,9 @@ public class BoardController {
      * 게시물 수정요청: /board/modify: POST
      */
 
-    @Autowired
     private final BoardService boardService;
 
+    @Autowired
     public BoardController(BoardService boardService) {
         this.boardService = boardService;
     }
@@ -46,7 +46,7 @@ public class BoardController {
     @GetMapping("/write")
     public String write() {
         log.info("board/write GET!");
-        return "";
+        return "board/write";
     }
 
     //글쓰기 등록 요청
