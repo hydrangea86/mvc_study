@@ -1,6 +1,7 @@
 package com.spring.mvc.board.controller;
 
 import com.spring.mvc.board.domain.Board;
+import com.spring.mvc.board.dto.ModBoard;
 import com.spring.mvc.board.service.BoardService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,7 @@ public class BoardController {
         boardService.write(board);
         return "redirect:/board/list";
     }
+
     //상세조회 요청
     // /board/content?boardNo=3
     @GetMapping("/content")
@@ -75,15 +77,21 @@ public class BoardController {
         return "redirect:/board/list";
     }
 
-    //게시물 수정 요청
+    //수정 양식 화면 요청
     @GetMapping("/modify")
-    public String update() {
-        log.info("/board/update GET!" );
+    public String modify(Long boardNo, Model model) {
+        log.info("/board/update GET! -" + boardNo );
+        Board board = boardService.get(boardNo);
+        model.addAttribute("board", board);
         return "/board/modify";
     }
+
+    //수정 요청 처리
     @PostMapping("/modify")
-    public String update(Board board) {
+    public String modify(ModBoard board) {
+        log.info("/board/modify post! -" + board);
         boardService.update(board);
-        return "redirect:/board/list";
+        return "redirect:/board/content?boardNo=" + board.getBoardNo();
     }
+
 }

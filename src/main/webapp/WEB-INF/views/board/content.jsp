@@ -68,9 +68,7 @@
             </div>
 
             <div class="btn-group btn-group-lg custom-btn-group button-list" role="group">
-                <button type="button" class="btn btn-warning">
-                    <a class="update-btn" href="/board/modify">수정</a>
-                </button>
+                <button id="mod-btn" type="button" class="btn btn-warning">수정</button>
                 <button type="button" class="btn btn-danger">
                     <a class="del-btn" href="/board/delete?boardNo=${b.boardNo}">삭제</a>
                 </button>
@@ -83,8 +81,15 @@
 
     </div>
     <script>
-        const $ul = document.querySelector('.button-list');
+        //수정버튼 이벤트
+        const $modBtn = document.getElementById('mod-btn');
+        $modBtn.onclick = e => {
+            location.href = '/board/modify?boardNo=${b.boardNo}';
+        };
 
+
+        //삭제버튼 이벤트
+        const $ul = document.querySelector('.button-list');
         $ul.addEventListener('click', e => {
             if (!e.target.matches('a.del-btn')) return;
 

@@ -1,11 +1,12 @@
 package com.spring.mvc.board.domain;
 
+import com.spring.mvc.board.dto.ModBoard;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 @Setter @Getter @ToString
-public class Board {
+public class Board extends ModBoard {
 
     private Long boardNo; //글번 호
     private String writer; //작성자

@@ -1,6 +1,7 @@
 package com.spring.mvc.board.service;
 
 import com.spring.mvc.board.domain.Board;
+import com.spring.mvc.board.dto.ModBoard;
 import com.spring.mvc.board.repository.BoardRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,7 @@ public class BoardService {
     public boolean write(Board board) {
         return boardRepository.insert(board);
     }
+
     //상세조회 중간처리
     public Board get(Long boardNo) {
         return boardRepository.getContent(boardNo);
@@ -47,7 +49,7 @@ public class BoardService {
     }
 
     //수정 요청
-    public boolean update(Board board) {
+    public boolean update(ModBoard board) {
         return boardRepository.update(board);
     }
 }
