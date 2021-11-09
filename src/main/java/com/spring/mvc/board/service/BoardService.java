@@ -43,13 +43,14 @@ public class BoardService {
         return boardRepository.getContent(boardNo);
     }
 
-    //중간 삭제처리
-    public void delete(Long boardNo) {
-        boardRepository.delete(boardNo);
+    //수정 중간처리
+    public boolean update(ModBoard board) {
+        boardRepository.update(board);
+        return true;
     }
 
-    //수정 요청
-    public boolean update(ModBoard board) {
-        return boardRepository.update(board);
+    //삭제 중간처리
+    public void remove(Long boardNo) {
+        boardRepository.delete(boardNo);
     }
 }

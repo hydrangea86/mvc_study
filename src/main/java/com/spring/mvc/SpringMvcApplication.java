@@ -25,5 +25,4 @@ public class SpringMvcApplication {
 	}
 
 	//"서블릿"은 "html" 작성이 번거롭고 "jsp"는 "java code" 작성하기 번거롭다.
-
 }

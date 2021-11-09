@@ -67,9 +67,12 @@
         const $table = document.querySelector(".articles");
         $table.addEventListener('click', e =>{
             if(!e.target.matches('.articles td')) return;
+
             console.log('tr 클릭됨-' + e.target);
+
             let bn = e.target.parentElement.firstElementChild.textContent;
             console.log('글번호' + bn);
+            
             location.href = '/board/content?boardNo=' + bn;
         });
     </script>

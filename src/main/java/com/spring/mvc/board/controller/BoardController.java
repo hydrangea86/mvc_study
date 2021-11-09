@@ -69,14 +69,6 @@ public class BoardController {
         return "/board/content";
     }
 
-    //게시물 삭제 요청
-    @GetMapping("/delete")
-    public String delete(Long boardNo) {
-        log.info("/board/content delete GET " + boardNo);
-        boardService.delete(boardNo);
-        return "redirect:/board/list";
-    }
-
     //수정 양식 화면 요청
     @GetMapping("/modify")
     public String modify(Long boardNo, Model model) {
@@ -93,5 +85,14 @@ public class BoardController {
         boardService.update(board);
         return "redirect:/board/content?boardNo=" + board.getBoardNo();
     }
+
+    //게시물 삭제 요청
+    @GetMapping("/delete")
+    public String delete(Long boardNo) {
+        log.info("/board/content delete GET " + boardNo);
+        boardService.remove(boardNo);
+        return "redirect:/board/list";
+    }
+
 
 }
