@@ -1,3 +1,6 @@
+-- noinspection SqlNoDataSourceInspectionForFile
+
+-- noinspection SqlDialectInspectionForFile
 
 
 CREATE TABLE score (

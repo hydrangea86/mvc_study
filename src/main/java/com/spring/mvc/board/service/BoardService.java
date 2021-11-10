@@ -27,31 +27,36 @@ public class BoardService {
         List<Board> articles = boardRepository.getArticles();
 
         //역정렬
-        List<Board> sortedList = new ArrayList<>();
-        for (int i = articles.size() - 1; i >= 0; i--) {
-            sortedList.add(articles.get(i));
-        }
-        return sortedList;
+//        List<Board> sortedList = new ArrayList<>();
+//        for (int i = articles.size() - 1; i >= 0; i--) {
+//            sortedList.add(articles.get(i));
+//       }
+//        return sortedList;
+        return articles;
     }
 
     //글쓰기 중간처리
     public boolean write(Board board) {
+
         return boardRepository.insert(board);
     }
 
     //상세조회 중간처리
     public Board get(Long boardNo) {
+
         return boardRepository.getContent(boardNo);
     }
 
     //수정 중간처리
     public boolean update(ModBoard board) {
+
         boardRepository.update(board);
         return true;
     }
 
     //삭제 중간처리
     public void remove(Long boardNo) {
+
         boardRepository.delete(boardNo);
     }
 }

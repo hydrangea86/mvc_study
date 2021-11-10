@@ -5,8 +5,13 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 @Setter @Getter @ToString
-public class Board extends ModBoard {
+//public class Board extens modBoard{  *MemoryRepository 쓸경우
+
+public class Board {
 
     private Long boardNo; //글번 호
     private String writer; //작성자
@@ -24,5 +29,12 @@ public class Board extends ModBoard {
         this.writer = writer;
         this.title = title;
         this.content = content;
+    }
+
+    public Board(ResultSet rs) throws SQLException {
+        this.boardNo = rs.getLong("board_no");
+        this.writer = rs.getString("writer");
+        this.title = rs.getString("title");
+        this.content = rs.getString("content");
     }
 }

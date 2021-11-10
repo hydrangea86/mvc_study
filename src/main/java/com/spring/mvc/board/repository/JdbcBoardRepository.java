@@ -15,7 +15,7 @@ import java.util.List;
 
 @Repository("jbr")
 @Log4j2
-public class JdbcBoardRepository implements BoardRepository{
+public class JdbcBoardRepository implements BoardRepository {
 
     //DB 접속 정보 설정
     private String id = "spring4";
@@ -23,28 +23,48 @@ public class JdbcBoardRepository implements BoardRepository{
     private String url = "jdbc:oracle:thin:@localhost:1521:xe";
     private String driver = "oracle.jdbc.driver.OracleDriver";
 
+
     @Override
     public List<Board> getArticles() {
+
         List<Board> boardList = new ArrayList<>();
 
         try {
             Class.forName(driver);
             Connection conn = DriverManager.getConnection(url, id, pw);
 
-            String sql = "SELECT * FROM board ORDER BY board_no DESC ";
+            String sql = "SELECT * FROM board ORDER BY board_no DESC";
             PreparedStatement pstmt = conn.prepareStatement(sql);
 
             ResultSet rs = pstmt.executeQuery();
-
+            while (rs.next()) {
+                boardList.add(new Board(rs));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return boardList;
     }
 
     @Override
     public Board getContent(Long boardNo) {
+        String sql = "SELECT * FROM board WHERE board_no = ?";
 
+        try {
+            Class.forName(driver);
+            Connection conn = DriverManager.getConnection(url, id, pw);
+
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setLong(1, boardNo);
+
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return new Board(rs);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
@@ -54,7 +74,8 @@ public class JdbcBoardRepository implements BoardRepository{
             Class.forName(driver);
             Connection conn = DriverManager.getConnection(url, id, pw);
 
-            String sql = "INSERT INTO board(board_no, writer, title, content) VALUES (seq_board.nextval, ?, ?, ?)";
+            String sql = "INSERT INTO board (board_no, writer, title, content)" +
+                    "VALUES (seq_board.nextval, ?,?,?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
 
             pstmt.setString(1, board.getWriter());
@@ -63,6 +84,24 @@ public class JdbcBoardRepository implements BoardRepository{
 
             return pstmt.executeUpdate() == 1;
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean delete(Long boardNo) {
+        try {
+            Class.forName(driver);
+            Connection conn = DriverManager.getConnection(url, id, pw);
+
+            String sql = "DELETE FROM board WHERE board_no=?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+
+            pstmt.setLong(1, boardNo);
+
+            return pstmt.executeUpdate() == 1;
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -70,14 +109,27 @@ public class JdbcBoardRepository implements BoardRepository{
         return false;
     }
 
-
-    @Override
-    public boolean delete(Long boardNo) {
-        return false;
-    }
-
     @Override
     public boolean update(ModBoard board) {
+        try {
+            Class.forName(driver);
+            Connection conn = DriverManager.getConnection(url, id, pw);
+
+            String sql = "UPDATE board SET " +
+                    "writer=?, title=?, content=? " +
+                    "WHERE board_no=?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+
+            pstmt.setString(1, board.getWriter());
+            pstmt.setString(2, board.getTitle());
+            pstmt.setString(3, board.getContent());
+            pstmt.setLong(4, board.getBoardNo());
+
+            return pstmt.executeUpdate() == 1;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return false;
     }
 }
