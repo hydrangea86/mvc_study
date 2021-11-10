@@ -26,7 +26,6 @@ public class ScoreController {
 
     @Autowired
 
-
     /*
     @GetMapping("score/score-list")
     public void scoreList() {
