@@ -18,7 +18,7 @@ public class BoardService {
     private final BoardRepository boardRepository;
 
     @Autowired
-    public BoardService(@Qualifier("jbr") BoardRepository boardRepository) {
+    public BoardService(@Qualifier("sbr") BoardRepository boardRepository) {
         this.boardRepository = boardRepository;
     }
 
