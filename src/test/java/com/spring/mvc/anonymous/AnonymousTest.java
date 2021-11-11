@@ -11,7 +11,6 @@ public class AnonymousTest {
 
         //익명 클래스 (일회용 재활용은 안됨)
         Car ferrari = new Car() {
-
             @Override
             public void run() {
                 System.out.println("페라리가 달립니다.");
@@ -19,16 +18,12 @@ public class AnonymousTest {
         };
         ferrari.run();
 
+        Car avante = () -> System.out.println("아반떼가 달립니다.");
+        avante.run();
 
         Dealer pororo = new Dealer();
-        pororo.getCar(sonata);
-        pororo.getCar(new Car() {
-            @Override
-            public void run() {
-                System.out.println("페라리가 달립니다.");
-            }
-        });
-
+        pororo.getCar(ferrari);
+        pororo.getCar(() -> System.out.println("아반떼가 달립니다."));
     }
 
     @Test
