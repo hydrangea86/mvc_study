@@ -1,31 +1,27 @@
 package com.spring.mvc.board.domain;
 
-import com.spring.mvc.board.dto.ModBoard;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import oracle.sql.DATE;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Setter @Getter @ToString
-//public class Board extens modBoard{  *MemoryRepository 쓸경우
-
 public class Board {
 
-    private Long boardNo; //글번 호
+    private Long boardNo; //글번호
     private String writer; //작성자
     private String title; //글제목
     private String content; //글내용
-    private DATE regDate; //작성시간
+    private Date regDate; //작성시간
     private int viewCnt; //조회수
 
     private String regDateStr; //포맷팅된 날짜문자열
 
-
-    private static long seq;  // Long 하면 안됨 기본값이 null이기 때문에 (주의)
+    private static long seq;
 
     public Board() {
         this.boardNo = ++seq;

@@ -4,6 +4,7 @@
 <html lang="ko">
 
 <head>
+    
     <%@ include file="../include/static-head.jsp" %>
 
     <style>
@@ -90,7 +91,8 @@
 
         </section>
 
-       <%@ include file="../include/footer.jsp" %>
+        <%@ include file="../include/footer.jsp" %>
+
 
     </div>
 

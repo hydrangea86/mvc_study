@@ -42,6 +42,7 @@
 </head>
 
 <body>
+
     <div class="wrap">
         <%@ include file="../include/header.jsp" %>
 
@@ -65,20 +66,22 @@
                 <p class="main-content">
                     ${b.content}
                 </p>
+
             </div>
 
-            <div class="btn-group btn-group-lg custom-btn-group button-list" role="group">
+            <div class="btn-group btn-group-lg custom-btn-group" role="group" >
                 <button id="mod-btn" type="button" class="btn btn-warning">수정</button>
-                <button type="button" class="btn btn-danger">삭제</button>
-                <button id="go-list" type="button" class="btn btn-dark">목록</button>
+                <button id="del-btn" type="button" class="btn btn-danger">삭제</button>
+                <button id="list-btn" type="button" class="btn btn-dark">목록</button>
             </div>
 
         </div>
 
-        <%@ include file="../include/footer.jsp" %>
 
+        <%@ include file="../include/footer.jsp" %>
     </div>
-    
+
+
     <script>
         const [$modBtn, $delBtn, $listBtn] 
            = [...document.querySelector('div[role=group]').children];

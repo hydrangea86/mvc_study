@@ -1,13 +1,15 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <%@ include file="../include/static-head.jsp" %>
 
     <style>
-       .board-list {
+        .board-list {
             width: 70%;
             margin: 0 auto;
         }
@@ -25,8 +27,11 @@
             position: relative;
             top: -70px;
         }
+
+
     </style>
 </head>
+
 <body>
 
     <div class="wrap">
@@ -50,11 +55,12 @@
                         <td>${b.title}</td>
                         <td>${b.viewCnt}</td>
                         <td>
-                            <fmt:formatDate value="${b.regDate}" pattern="yyyy년 MM월 dd일 hh:mm" />
+                            <fmt:formatDate value="${b.regDate}" pattern="yyyy년 MM월 dd일 E요일 a hh:mm" />                            
                         </td>
                     </tr>
                 </c:forEach>
             </table>
+
             <div class="btn-write">
                 <a class="btn btn-outline-danger btn-lg" href="/board/write">글쓰기</a>
             </div>
@@ -68,17 +74,19 @@
     <script>
         //상세보기 요청 이벤트
         const $table = document.querySelector(".articles");
-        $table.addEventListener('click', e =>{
-            if(!e.target.matches('.articles td')) return;
+        $table.addEventListener('click', e => {
+            if (!e.target.matches('.articles td')) return;
 
-            console.log('tr 클릭됨-' + e.target);
+            //console.log('tr 클릭됨! - ', e.target);
 
             let bn = e.target.parentElement.firstElementChild.textContent;
-            console.log('글번호' + bn);
-            
+            console.log('글번호: ' + bn);
+
             location.href = '/board/content?boardNo=' + bn;
         });
+
     </script>
 
 </body>
+
 </html>

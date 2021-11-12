@@ -7,7 +7,7 @@
 <style>
     .write-container {
         width: 50%;
-        margin: 250px auto 150px;
+        margin: 200px auto 150px;
         font-size: 1.2em;
     }
 </style>
@@ -45,7 +45,12 @@
         </div>
 
         <%@ include file="../include/footer.jsp" %>
+
+
+        
     </div>
+
+
     <script>
         //목록버튼 이벤트
         const $toList = document.getElementById('to-list');
@@ -53,6 +58,7 @@
             location.href = '/board/list';
         };
     </script>
+
 </body>
 
 </html>

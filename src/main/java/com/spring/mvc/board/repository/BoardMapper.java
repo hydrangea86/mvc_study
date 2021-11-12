@@ -12,7 +12,7 @@ public interface BoardMapper {
     //게시물 목록 조회
     List<Board> getArticles();
 
-    //게시물 상세조회
+    //게시물 상세 조회
     Board getContent(Long boardNo);
 
     //게시물 등록
