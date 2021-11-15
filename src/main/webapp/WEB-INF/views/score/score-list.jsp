@@ -56,16 +56,16 @@
             <h1>시험 점수 등록</h1>
             <form action="/score/register" method="POST">
                 <label>
-                    # 이름: <input type="text" name="name">
+                    # 이름: <input type="text" name="name" placeholder="이름 입력">
                 </label>
                 <label>
-                    # 국어: <input type="text" name="kor">
+                    # 국어: <input type="text" name="kor" placeholder="점수 입력">
                 </label>
                 <label>
-                    # 영어: <input type="text" name="eng">
+                    # 영어: <input type="text" name="eng" placeholder="점수 입력">
                 </label>
                 <label>
-                    # 수학: <input type="text" name="math">
+                    # 수학: <input type="text" name="math" placeholder="점수 입력">
                 </label>
                 <label>
                     <button type="submit">확인</button>

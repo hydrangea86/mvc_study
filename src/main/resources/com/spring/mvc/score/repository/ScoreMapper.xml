@@ -42,7 +42,7 @@
     </select>
 
     <!-- 점수 개별 조회 -->
-    <select id="findone" resultMap="scoreMap">
+    <select id="findOne" resultMap="scoreMap">
         SELECT * FROM score
         WHERE stu_num = #{stuNum}
     </select>
