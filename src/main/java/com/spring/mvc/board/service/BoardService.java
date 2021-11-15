@@ -3,12 +3,11 @@ package com.spring.mvc.board.service;
 import com.spring.mvc.board.domain.Board;
 import com.spring.mvc.board.dto.ModBoard;
 import com.spring.mvc.board.repository.BoardMapper;
+import com.spring.mvc.common.paging.Page;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -26,8 +25,11 @@ public class BoardService {
 //    }
 
     //게시물 목록 중간처리
-    public List<Board> getList() {
-        List<Board> articles = boardMapper.getArticles();
+    public List<Board> getList(Page page) {
+        List<Board> articles = boardMapper.getArticles(page);
+
+        //신규게시물 new마킹 처리
+        return judgeNewArticle(articles);
 
 //        for (Board article : articles) {
 //            //날짜정보를 이쁘게
@@ -44,6 +46,27 @@ public class BoardService {
 //            sortedList.add(articles.get(i));
 //        }
 //        return sortedList;
+       // return articles;
+    }
+
+    private List<Board> judgeNewArticle(List<Board> articles) {
+        //해당 리스트에서 게시물객체 하나씩 꺼내 작성일자를 추출
+        for (Board article : articles) {
+
+            //작성일자
+            long regDateTime = article.getRegDate().getTime();
+
+            //현재시간
+            long nowTime = System.currentTimeMillis();
+
+            //현재시간 - 작성시간
+            long diff = nowTime -regDateTime;
+
+            long limitTime = 20 * 60 * 1000;
+            if(diff < limitTime) {
+                article.setNewFlag(true);
+            }
+        }
         return articles;
     }
 

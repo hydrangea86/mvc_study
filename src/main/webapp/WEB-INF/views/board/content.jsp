@@ -1,5 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -33,10 +36,21 @@
         }
 
         .content-container .custom-btn-group {
-            position: absolute;
+            /* position: absolute;
             bottom: -10%;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%); */
+        }
+
+        .content-container .bottom-group {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .content-container .bottom-group .update-time {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
         }
     </style>
 </head>
@@ -69,10 +83,21 @@
 
             </div>
 
-            <div class="btn-group btn-group-lg custom-btn-group" role="group" >
-                <button id="mod-btn" type="button" class="btn btn-warning">수정</button>
-                <button id="del-btn" type="button" class="btn btn-danger">삭제</button>
-                <button id="list-btn" type="button" class="btn btn-dark">목록</button>
+            <div class="bottom-group">
+
+                <div class="update-time">
+                  
+                    <span class="time">마지막 수정 시간:
+                        <fmt:formatDate value="${b.updateDate}" pattern="yyyy년 MM월 dd일 a hh:mm:ss" /></span>
+                  
+                </div>
+
+
+                <div class="btn-group btn-group-lg custom-btn-group" role="group">
+                    <button id="mod-btn" type="button" class="btn btn-warning">수정</button>
+                    <button id="del-btn" type="button" class="btn btn-danger">삭제</button>
+                    <button id="list-btn" type="button" class="btn btn-dark">목록</button>
+                </div>
             </div>
 
         </div>
@@ -83,8 +108,7 @@
 
 
     <script>
-        const [$modBtn, $delBtn, $listBtn] 
-           = [...document.querySelector('div[role=group]').children];
+        const [$modBtn, $delBtn, $listBtn] = [...document.querySelector('div[role=group]').children];
 
         // const $modBtn = document.getElementById('mod-btn');
         //수정버튼
@@ -94,7 +118,7 @@
 
         //삭제버튼
         $delBtn.onclick = e => {
-            if(!confirm('정말 삭제하시겠습니까?')) {
+            if (!confirm('정말 삭제하시겠습니까?')) {
                 return;
             }
             location.href = '/board/delete?boardNo=${b.boardNo}';

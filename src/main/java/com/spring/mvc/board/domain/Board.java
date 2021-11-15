@@ -17,9 +17,11 @@ public class Board {
     private String title; //글제목
     private String content; //글내용
     private Date regDate; //작성시간
+    private Date updateDate; //최종 수정시간
     private int viewCnt; //조회수
 
     private String regDateStr; //포맷팅된 날짜문자열
+    private boolean newFlag; //신규글 여부
 
     private static long seq;
 
