@@ -84,14 +84,11 @@
             </div>
 
             <div class="bottom-group">
-
                 <div class="update-time">
-                  
-                    <span class="time">마지막 수정 시간:
-                        <fmt:formatDate value="${b.updateDate}" pattern="yyyy년 MM월 dd일 a hh:mm:ss" /></span>
-                  
+                    <c:if test="${b.updateDate != null}">
+                        <span class="time">마지막 수정 시간: <fmt:formatDate value="${b.updateDate}" pattern="yyyy년 MM월 dd일 a hh:mm:ss" /></span>
+                    </c:if>
                 </div>
-
 
                 <div class="btn-group btn-group-lg custom-btn-group" role="group">
                     <button id="mod-btn" type="button" class="btn btn-warning">수정</button>
