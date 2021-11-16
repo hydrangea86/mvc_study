@@ -26,6 +26,13 @@
      ]]>
     </select>
 
+    <!-- 총 게시물 수 조회 타입 하나 리턴할 경우 "resultType"-->
+    <select id="getTotalCount" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM board
+    </select>
+
     <!--    //게시물 상세 조회-->
     <select id="getContent" resultMap="boardMap">
         SELECT * FROM board

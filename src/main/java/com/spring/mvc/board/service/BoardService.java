@@ -91,4 +91,9 @@ public class BoardService {
     public void remove(Long boardNo) {
         boardMapper.delete(boardNo);
     }
+
+    //총 게시물 수 조회 중간처리
+    public int getCount() {
+        return boardMapper.getTotalCount();
+    }
 }
