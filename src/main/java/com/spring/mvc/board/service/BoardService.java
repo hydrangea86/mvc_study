@@ -93,7 +93,7 @@ public class BoardService {
     }
 
     //총 게시물 수 조회 중간처리
-    public int getCount() {
-        return boardMapper.getTotalCount();
+    public int getCount(Page page) {
+        return boardMapper.getTotalCount(page);
     }
 }
