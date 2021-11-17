@@ -54,6 +54,19 @@
         COUNT(*)
         FROM board
         WHERE 1=1
+        <if test="type == 'title'">
+            AND title LIKE '%' || #{keyword} || '%'
+        </if>
+        <if test="type == 'writer'">
+            AND writer LIKE '%' || #{keyword} || '%'
+        </if>
+        <if test="type == 'content'">
+            AND content LIKE '%' || #{keyword} || '%'
+        </if>
+        <if test="type == 'titleContent'">
+            AND (title LIKE '%' || #{keyword} || '%'
+            OR content LIKE '%' || #{keyword} || '%')
+        </if>
     </select>
 
     <!--    //게시물 상세 조회-->
