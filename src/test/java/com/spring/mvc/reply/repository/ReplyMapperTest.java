@@ -54,7 +54,7 @@ class ReplyMapperTest {
 
     @Test
     void getList() {
-        List<Reply> list = replyMapper.getList(344L);
+        List<Reply> list = replyMapper.getList(649L);
         System.out.println("\n===================================");
         for (Reply reply : list) {
             System.out.println("reply = " + reply);
