@@ -59,7 +59,7 @@ public class ScoreController {
     //성적정보 삭제 요청처리
     @GetMapping("/score/delete")
     public String delete(int stuNum) {
-        log.info("/score/delte Get! " + stuNum);
+        log.info("/score/delete Get! " + stuNum);
         scoreService.remove(stuNum);
         return "redirect:/score/list";
     }
