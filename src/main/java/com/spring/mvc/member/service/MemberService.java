@@ -1,12 +1,34 @@
 package com.spring.mvc.member.service;
 
+import com.spring.mvc.member.domain.Member;
+import com.spring.mvc.member.repository.MemberMapper;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-@Log4j2
 @RequiredArgsConstructor
 public class MemberService {
 
+    private final MemberMapper memberMapper;
+
+    //아이디 중복확인 중간처리
+    public boolean isDuplicate(String checkId) {
+        return memberMapper.isDuplicate(checkId) == 1;
+    }
+
+    //아이디 중복확인 중간처리
+    public boolean isDuplicate1(String checkEmmail) {
+
+        return memberMapper.isDuplicate(checkEmmail) == 1;
+    }
+
+
+    public void signUp(Member member) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String encodePw = encoder.encode(member.getPassword());
+        member.setPassword(encodePw);
+
+        memberMapper.register(member);
+    }
 }

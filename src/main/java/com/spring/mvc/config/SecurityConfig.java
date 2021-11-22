@@ -15,7 +15,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/*")
                 .permitAll();
-
-        //시큐리티 모든 기능을 끄는 기능
     }
 }
+

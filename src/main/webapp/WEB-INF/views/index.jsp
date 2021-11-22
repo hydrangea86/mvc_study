@@ -2,46 +2,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
-<%@ include file="../include/static-head.jsp" %>
-
 
 <head>
     <%@ include file="include/static-head.jsp" %>
+</head>
+
 <body>
 
     <div class="wrap">
 
-        <!-- header -->
-        <header>
-            <div class="inner-header">
-                <h1 class="logo">
-                    <a href="#">
-                        <img src="img/logo.png" alt="로고이미지">
-                    </a>
-                </h1>
-                <h2 class="intro-text">Welcome</h2>
-                <a href="#" class="menu-open">
-                    <span class="menu-txt">MENU</span>
-                    <span class="lnr lnr-menu"></span>
-                </a>
-            </div>
-
-            <nav class="gnb">
-                <a href="#" class="close">
-                    <span class="lnr lnr-cross"></span>
-                </a>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/score/list">Score App</a></li>
-                    <li><a href="/board/list">Board</a></li>
-                    <li><a href="/hello.jsp">Contact</a></li>
-                    <li><a href="/login-form">Login</a></li>
-                    <li><a href="/join">join</a></li>
-                </ul>
-            </nav>
-
-        </header>
-        <!-- //header -->
+        <%@ include file="include/header.jsp" %>
 
         <!-- section visual -->
         <section class="visual">
@@ -194,20 +164,7 @@
         </section>
         <!--  //section contents   -->
 
-        <!-- footer-->
-        <footer>
-            <ul>
-                <li>Hong Studio<br>사업자등록번호:123-12-12345 <br>대표자:홍길동</li>
-                <li>
-                    <span>A :</span>대전 서구 계룡로 637<br>
-                    <span>T :</span>010.1234.1234<br>
-                    <span>E :</span>abc123@abc.co.kr<br>
-                </li>
-                <li> &#xa9 Hong Studio 2021 <br>All Rights Reseved</li>
-            </ul>
-            <a href="#top" class="go-top"><span class="lnr lnr-arrow-up"></span></a>
-        </footer>
-        <!-- //footer-->
+        <%@ include file="include/footer.jsp" %>
 
 
         <script>
