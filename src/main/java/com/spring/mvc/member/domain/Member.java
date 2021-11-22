@@ -1,6 +1,7 @@
 package com.spring.mvc.member.domain;
 
 import lombok.*;
+
 import java.util.Date;
 
 @Getter @Setter @ToString

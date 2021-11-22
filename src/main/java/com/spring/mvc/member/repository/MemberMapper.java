@@ -3,7 +3,6 @@ package com.spring.mvc.member.repository;
 import com.spring.mvc.member.domain.Member;
 import org.apache.ibatis.annotations.Mapper;
 
-
 @Mapper
 public interface MemberMapper {
 
@@ -19,4 +18,3 @@ public interface MemberMapper {
     //단일 회원정보 조회 기능
     Member getUser(String account);
 }
-

@@ -2,7 +2,6 @@ package com.spring.mvc.member.controller;
 
 import com.spring.mvc.member.domain.Member;
 import com.spring.mvc.member.service.MemberService;
-import com.sun.org.apache.regexp.internal.RE;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
@@ -23,30 +22,26 @@ public class MemberController {
         return "member/join";
     }
 
-
     //아이디 중복확인 비동기 통신요청
     @GetMapping("/check")
     @ResponseBody
-    public boolean check(String CheckId) {
-        log.info("/check 비동기 요청 GET! " + CheckId);
-
-        return memberService.isDuplicate(CheckId);
+    public boolean check(String checkId) {
+        log.info("/check 비동기 요청 GET! " + checkId);
+        return memberService.isDuplicate(checkId);
     }
 
     //이메일 중복확인 비동기 통신요청
     @GetMapping("/check2")
     @ResponseBody
-    public boolean check2(String CheckEmail) {
-        log.info("/check 비동기 요청 GET! " + CheckEmail);
-
-        return memberService.isDuplicate(CheckEmail);
+    public boolean check2(String checkEmail) {
+        log.info("/check2 비동기 요청 GET! " + checkEmail);
+        return memberService.isDuplicate2(checkEmail);
     }
 
-    //회원가입 요청 처리 form은 비동기가 아님
+    //회원가입 요청 처리
     @PostMapping("/member/sign-up")
     public String signUp(Member member) {
-        log.info("/member/sign-up POST " + member);
-
+        log.info("/member/sign-up POST! - " + member);
         //서비스 위임
         memberService.signUp(member);
         return "redirect:/";

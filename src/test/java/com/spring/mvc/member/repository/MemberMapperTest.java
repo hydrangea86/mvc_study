@@ -79,6 +79,4 @@ class MemberMapperTest {
         int result2 = memberMapper.isDuplicate2(inputEmail);
         assertTrue(result2 == 1);
     }
-
-
 }
